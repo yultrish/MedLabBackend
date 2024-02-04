@@ -31,5 +31,4 @@ const pharmacySchema = new Schema(
 );
 
 const Pharmacy = mongoose.model("Pharmacy", pharmacySchema);
-
 export default Pharmacy;

@@ -1,5 +1,6 @@
 import Pharmacy from "../model/pharm.js";
 
+// create new drug
 const createPharm = async (req, res) => {
   try {
     const { name, description, unitPricing, price, drugCode } = req.body;
@@ -24,6 +25,7 @@ const createPharm = async (req, res) => {
   }
 };
 
+//fetch all drugs
 const getAllPharm = async (req, res) => {
   try {
     const pharm = await Pharmacy.find();
@@ -36,6 +38,7 @@ const getAllPharm = async (req, res) => {
   }
 };
 
+//fetch a drug 
 const getpharm = async (req, res) => {
   try {
     const { id } = req.params;
@@ -49,11 +52,11 @@ const getpharm = async (req, res) => {
   }
 };
 
+// update drug
 const updatePharm = async (req, res) => {
   try {
     const { name, description, unitPricing, price, drugCode } = req.body;
     const { id } = req.params;
-    // const pharm = await Pharmacy.findById(id)
     const updatedPharm = await Pharmacy.findByIdAndUpdate(
       id,
       { name, description, unitPricing, price, drugCode },
@@ -66,6 +69,7 @@ const updatePharm = async (req, res) => {
   }
 };
 
+//delete a drug
 const deletePharm = async (req, res) => {
   try {
     const { id } = req.params;
@@ -79,6 +83,7 @@ const deletePharm = async (req, res) => {
   }
 };
 
+//delete all drugs
 const deleteDrugs = async (req, res) => {
   try {
     const deletedDrugs = await Pharmacy.deleteMany({});
@@ -91,7 +96,6 @@ const deleteDrugs = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Unable to delete these drugs" });
-
   }
 };
 
